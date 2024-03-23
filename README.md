@@ -24,6 +24,11 @@ from mysql.connector import errorcode</pre></li>
   <li>Crie uma variavel que vai receber a classe <b>controlador</b> que recebe o nome do banco de dados a ser criado, Ex: <b>imobiliaria</b>
     <pre>root = controlador("imobiliaria")</pre>
   </li>
+  <li>O paramentro passado sera o nome do banco de dados que já existe ou sera criado neste momento;</li>
+  <li>Para executar algumas interações acesse a variave <b>cursor</b> da classe <b>controlador</b>. Ex.:
+    <pre>root.cursor.tableDatabase(tabela,colunas)</pre>
+  </li>
+  <li><b>tableDatabase</b> é o metodo para se criar uma tabela;</li>
   <li></li>
 </ol>  
 <h2>Expansão do Projeto:</h2>
