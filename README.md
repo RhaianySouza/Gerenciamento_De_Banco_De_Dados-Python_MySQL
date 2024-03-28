@@ -23,7 +23,7 @@ from mysql.connector import errorcode</pre></li>
 <h2>Execução:</h2>
 <ol>
   <li>Crie uma variavel que vai receber a classe <b>Moderador</b> que recebe o nome do banco de dados a ser criado, Ex: <b>biblioteca</b>
-    <pre>root = controlador("biblioteca")</pre>
+    <pre>root = Moderador("biblioteca")</pre>
     Se o banco de dados existir, será tentado uma conexão, caso consiga será impresso na tela:
     <pre>Conexão ao MySQL Server bem-sucedida<br/>Banco de Dados: BIBLIOTECA</pre>
     Se não, o banco de dados será criado:
