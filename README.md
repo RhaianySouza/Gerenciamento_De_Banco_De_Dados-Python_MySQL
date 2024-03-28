@@ -38,74 +38,58 @@ from mysql.connector import errorcode</pre></li>
   <pre>root.dataBaseDrop()</pre>
   <li>tableCreate(table,colls)#CRIA TABELAS (PARAMETRO: nome da tabela, nome das colunas e seu respectivos valores)</li>
   Criar tabela <b>Livros</b>:
-  <pre>
-    root.tableCreate("livros","""
-	titulo VARCHAR(100),
-	autor VARCHAR(20),
-	ano_publicacao INT,
-	editora VARCHAR(20),
-	genero VARCHAR(20)""")
+  <pre>root.tableCreate("livros","""
+  titulo VARCHAR(100),
+  autor VARCHAR(20),
+  ano_publicacao INT,
+  editora VARCHAR(20),
+  genero VARCHAR(20)""")
   </pre>
   Criar tabela <b>Autores</b>:
   <pre>root.tableCreate("autores","""
-    id_autor INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(20),
-    nacionalidade VARCHAR(20),
-    data_nascimento VARCHAR(30)""")
+  id_autor INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(20),
+  nacionalidade VARCHAR(20),
+  data_nascimento VARCHAR(30)""")
   </pre>
   <li>tableDrop(table): #DELETAR TABELAS (PARAMETRO:nome da tabela)</li>
-  <pre>
-    root.tableDrop('autores')
-  </pre>
+	<pre>root.tableDrop('autores')</pre>
   <li>addColumns(table,coll)#ADICIONA COLUNA (PARAMETRO: nome da tabela, nome das colunas e seu respectivos valores)</li>
-  <pre>
-    root.addColumns('livros','isnb10 INT NOT NULL')
-    root.addColumns('livros','idioma VARCHAR(15)')
-  </pre>
+	<pre>root.addColumns('livros','isnb10 INT NOT NULL')<br/>root.addColumns('livros','idioma VARCHAR(15)')</pre>
   <li>dropColumns(table,coll): #EXCLUIR COLUNA (PARAMETRO: nome da tabela, nome da coluna)</li>
-  <pre>
-    root.dropColumns('livros','idioma')
-  </pre>
+	<pre>root.dropColumns('livros','idioma')</pre>
   <li>alterForeign(table1,coll1,table2,coll2):#ADD CHAVE ESTRANGEIRA<br/>(PARAMETRO: nome da tabela 1, nome da coluna 1,nome da tabela 2, nome da coluna 2)</li>
-    <pre>root.alterForeign('autores','nome','livros','autor')</pre>pre>
+	<pre>root.alterForeign('autores','nome','livros','autor')</pre>
   <li>alterForeignCONSTRAINT(self,table1,coll1,table2,coll2,ship):#ADD CHAVE ESTRANGEIRA<br/>(PARAMETRO: nome da tabela 1, nome da coluna 1,nome da tabela 2, nome da coluna 2, restrição)</li>
-  <pre>  
-    root.alterForeignCONSTRAINT('autores','nome','livros','autor','FK_livrosAutores')
-  </pre> 
+	<pre>root.alterForeignCONSTRAINT('autores','nome','livros','autor','FK_livrosAutores')</pre> 
   <li>dropForeign(self,table,coll):#EXCLUIR CHAVE ESTRANGEIRA (PARAMETRO: nome da tabela, nome da coluna)</li>
-  <pre>  
-    root.dropForeign('autores','nome','livros','autor','FK_livrosAutores')
-  </pre> 
+	<pre>root.dropForeign('livros','autor')</pre> 
   <li>alterPrimaryKey(self,table,coll):#ALTERAR CHAVE PRIMARIA (PARAMETRO: nome da tabela, nome da coluna)</li>
-  <pre>  
-    root.alterPrimaryKey('livros','isnb10')
-  </pre>
+	<pre>root.alterPrimaryKey('livros','isnb10')</pre>
   <li>dropPrimaryKey(table):#EXCLUIR CHAVE PRIMARIA</li>
-  <pre>  
-    root.dropPrimaryKey('livros')
-  </pre>  
+	<pre>root.dropPrimaryKey('livros')</pre>  
   <li>showTable(self):#MOSTRAR TODAS AS TABELAS</li>
-  <pre>  
-    for i in root.showTable():
-        print(i)
-  </pre>
+	<pre>for i in root.showTable():
+  print(i)</pre>
   <li>showColumns(self,table):#MOSTRAR TODAS AS COLUNAS EM UMA TABELAS (PARAMETRO: nome da tabela)</li>
-  <pre>  
-    for i in root.showColumns('livros'):
-        print(i)
-  </pre>
+	<pre>for i in root.showColumns('livros'):
+  print(i)</pre>
   <h3>Metodos da classe para manipulação de registros</h3>
   <li>insert(table,coll,values):#INSERIR REGISTROS (PARAMETRO: nome da tabela,colunas afetadas,valores)</li>
     Inserir registro na tabela <b>Livros</b>
-  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isnb10','"Dom Casmurro", "Machado de Assis",1899,"Garnier","Romance",6586490081')</pre>
-  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isnb10','"O Senhor dos Anéis: A Sociedade do Anel","J.R.R. Tolkien",1954,"Allen & Unwin","Fantasia",8595084750')</pre>
-  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isnb10','"1984","George Orwell",1949,"Secker & Warburg","Ficção Distópica",6587034209')</pre>
-  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isnb10','"Harry Potter e a Pedra Filosofal","J.K. Rowling", 1997,"Bloomsbury","Fantasia",8532530788')</pre>
+	<pre>#Colunas Livros
+livros = 'titulo,autor,ano_publicacao,editora,genero,isnb10'</pre>
+  <pre>root.insert('livros',livros,'"Dom Casmurro", "Machado de Assis",1899,"Garnier","Romance",6586490081')</pre>
+  <pre>root.insert('livros',livros,'"O Senhor dos Anéis: A Sociedade do Anel","J.R.R. Tolkien",1954,"Allen & Unwin","Fantasia",8595084750')</pre>
+  <pre>root.insert('livros',livros,'"1984","George Orwell",1949,"Secker & Warburg","Ficção Distópica",6587034209')</pre>
+  <pre>root.insert('livros',livros,'"Harry Potter e a Pedra Filosofal","J.K. Rowling", 1997,"Bloomsbury","Fantasia",8532530788')</pre>
     Inserir registro na tabela <b>Autores</b>
-  <pre>root.insert('autores','nome,nacionalidade,data_nascimento','"Agatha Christie","Britânica","1890-09-15"')</pre>
-  <pre>root.insert('autores','nome,nacionalidade,data_nascimento','"George Orwell","Britânica","1903-06-25"')</pre>
-  <pre>root.insert('autores','nome,nacionalidade,data_nascimento','"J.R.R. Tolkien","Britânica","1892-01-03"')</pre>
-  <pre>root.insert('autores','nome,nacionalidade,data_nascimento','"J.K. Rowling","Britânica","1965-07-31"')</pre>
+	<pre>#Colunas Autores
+autores = 'nome,nacionalidade,data_nascimento'</pre>
+  <pre>root.insert('autores',autores,'"Agatha Christie","Britânica","1890-09-15"')</pre>
+  <pre>root.insert('autores',autores,'"George Orwell","Britânica","1903-06-25"')</pre>
+  <pre>root.insert('autores',autores,'"J.R.R. Tolkien","Britânica","1892-01-03"')</pre>
+  <pre>root.insert('autores',autores,'"J.K. Rowling","Britânica","1965-07-31"')</pre>
   
   <li>delete(table,coll,values):#DELETAR REGISTRO (PARAMETRO: nome da tabela,colunas onde valor ocorrore)</li>
   <pre>root.delete('livros','autor','J.K. Rowling')</pre>
