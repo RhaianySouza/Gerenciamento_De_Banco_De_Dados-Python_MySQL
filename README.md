@@ -16,6 +16,7 @@ Um projeto de gestão de banco de dados em Python que interage com MySQL para cr
   <li>Crie um arquivo chamado controledebancodedados.py para gerenciar a conexão com o MySQL
     <pre>import mysql.connector
 from mysql.connector import errorcode</pre></li>
+  <li>Gerenciar a criação exclusão de tabelas, assim como colunas, chave primaria e estrangeira.</li>
   <li>Inserção, atualização e exclusão de registros.</li>
   <li>Busca e listagem de dados com filtros.</li>
 </ol>
