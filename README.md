@@ -59,7 +59,7 @@ from mysql.connector import errorcode</pre></li>
   </pre>
   <li>addColumns(table,coll)#ADICIONA COLUNA (PARAMETRO: nome da tabela, nome das colunas e seu respectivos valores)</li>
   <pre>
-    root.addColumns('livros','isbn10 INT NOT NULL')
+    root.addColumns('livros','isnb10 INT NOT NULL')
     root.addColumns('livros','idioma VARCHAR(15)')
   </pre>
   <li>dropColumns(table,coll): #EXCLUIR COLUNA (PARAMETRO: nome da tabela, nome da coluna)</li>
@@ -78,7 +78,7 @@ from mysql.connector import errorcode</pre></li>
   </pre> 
   <li>alterPrimaryKey(self,table,coll):#ALTERAR CHAVE PRIMARIA (PARAMETRO: nome da tabela, nome da coluna)</li>
   <pre>  
-    root.alterPrimaryKey('livros','isbn10')
+    root.alterPrimaryKey('livros','isnb10')
   </pre>
   <li>dropPrimaryKey(table):#EXCLUIR CHAVE PRIMARIA</li>
   <pre>  
@@ -97,13 +97,15 @@ from mysql.connector import errorcode</pre></li>
   <h3>Metodos da classe para manipulação de registros</h3>
   <li>insert(table,coll,values):#INSERIR REGISTROS (PARAMETRO: nome da tabela,colunas afetadas,valores)</li>
     Inserir registro na tabela <b>Livros</b>
-  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isbn10','"Dom Casmurro", "Machado de Assis",1899,"Garnier","Romance",6586490081')</pre>
-  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isbn10','"O Senhor dos Anéis: A Sociedade do Anel","J.R.R. Tolkien",1954,"Allen & Unwin","Fantasia",8595084750')</pre>
-  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isbn10','"1984","George Orwell",1949,"Secker & Warburg","Ficção Distópica",6587034209')</pre>
-  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isbn10','"Harry Potter e a Pedra Filosofal","J.K. Rowling", 1997,"Bloomsbury","Fantasia",8532530788')</pre>
+  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isnb10','"Dom Casmurro", "Machado de Assis",1899,"Garnier","Romance",6586490081')</pre>
+  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isnb10','"O Senhor dos Anéis: A Sociedade do Anel","J.R.R. Tolkien",1954,"Allen & Unwin","Fantasia",8595084750')</pre>
+  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isnb10','"1984","George Orwell",1949,"Secker & Warburg","Ficção Distópica",6587034209')</pre>
+  <pre>root.insert('livros','titulo,autor,ano_publicacao,editora,genero,isnb10','"Harry Potter e a Pedra Filosofal","J.K. Rowling", 1997,"Bloomsbury","Fantasia",8532530788')</pre>
     Inserir registro na tabela <b>Autores</b>
-  <pre>root.insert('autores','nome,nacionalidade,data_nascimento','"Agatha Christie","Britânica","15 de setembro de 1890"')</pre>
-  <pre>root.insert('autores','nome,nacionalidade,data_nascimento','"George Orwell","Britânica","25 de junho de 1903"')</pre>
+  <pre>root.insert('autores','nome,nacionalidade,data_nascimento','"Agatha Christie","Britânica","1890-09-15"')</pre>
+  <pre>root.insert('autores','nome,nacionalidade,data_nascimento','"George Orwell","Britânica","1903-06-25"')</pre>
+  <pre>root.insert('autores','nome,nacionalidade,data_nascimento','"J.R.R. Tolkien","Britânica","1892-01-03"')</pre>
+  <pre>root.insert('autores','nome,nacionalidade,data_nascimento','"J.K. Rowling","Britânica","1965-07-31"')</pre>
   
   <li>delete(table,coll,values):#DELETAR REGISTRO (PARAMETRO: nome da tabela,colunas onde valor ocorrore)</li>
   <pre>root.delete('livros','autor','J.K. Rowling')</pre>
